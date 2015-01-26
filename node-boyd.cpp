@@ -67,8 +67,8 @@ Handle<Value> open(const Arguments &args)
   
   Handle<Object> ret = Object::New();
   
-  cv::VideoCapture *cap = new cv::VideoCapture(0);
-  ret->Set(String::New("success"), Boolean::New(cap->isOpened()));
+  cv::VideoCapture *cap = new cv::VideoCapture();
+  ret->Set(String::New("success"), Boolean::New(cap->open(0)));
   
   if(!cap->isOpened())
   {
