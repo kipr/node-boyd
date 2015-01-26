@@ -10,7 +10,8 @@
         'libraries': [
           '-lm',
           '-lopencv_core',
-          '-lopencv_highgui',
+          '-lopencv_videoio',
+          '-lopencv_imgcodecs',
         ],
         'library_dirs': [
           '/usr/lib',

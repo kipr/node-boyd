@@ -1,6 +1,6 @@
 {
   "name": "node-boyd",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/kipr/node-boyd/issues"
   },
-  "homepage": "https://github.com/kipr/node-boyd"
+  "homepage": "https://github.com/kipr/node-boyd",
+  "dependencies": {
+    "bindings": "^1.2.1"
+  }
 }

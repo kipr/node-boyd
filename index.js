@@ -1,1 +1,3 @@
-module.exports = require('bindings')('node-boyd.node');
+boyd = require('bindings')('node-boyd.node');
+
+module.exports = boyd
