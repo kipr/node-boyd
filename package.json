@@ -1,0 +1,21 @@
+{
+  "name": "node-boyd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kipr/node-boyd.git"
+  },
+  "author": "Braden McDorman",
+  "license": "GPLv3",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/kipr/node-boyd/issues"
+  },
+  "homepage": "https://github.com/kipr/node-boyd"
+}
