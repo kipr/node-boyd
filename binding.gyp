@@ -12,6 +12,7 @@
           '-lopencv_core',
           '-lopencv_videoio',
           '-lopencv_imgcodecs',
+          '-lopencv_imgproc',
         ],
         'library_dirs': [
           '/usr/lib',

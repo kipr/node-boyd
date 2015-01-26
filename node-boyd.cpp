@@ -4,6 +4,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/videoio.hpp>
 #include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
 
 using namespace v8;
 
@@ -106,13 +107,16 @@ Handle<Value> getImage(const Arguments &args)
   cv::Mat im;
   cap->read(im);
   
+  cv::Mat res;
+  cv::resize(im, res, cv::Size(320, 240));
+  
   std::vector<int> param;
   param.push_back(cv::IMWRITE_JPEG_QUALITY);
   param.push_back(40);
   
   std::vector<unsigned char> buff;
   
-  cv::imencode(".jpg", im, buff, param);
+  cv::imencode(".jpg", res, buff, param);
   
   return scope.Close(String::New(base64_encode(&buff[0], buff.size()).c_str()));
 }
