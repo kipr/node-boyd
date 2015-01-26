@@ -112,7 +112,7 @@ Handle<Value> getImage(const Arguments &args)
   
   std::vector<int> param;
   param.push_back(cv::IMWRITE_JPEG_QUALITY);
-  param.push_back(40);
+  param.push_back(90);
   
   std::vector<unsigned char> buff;
   
