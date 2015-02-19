@@ -114,7 +114,7 @@ Handle<Value> getImage(const Arguments &args)
   param.push_back(cv::IMWRITE_JPEG_QUALITY);
   param.push_back(90);
   
-  std::vector<unsigned char> buff;
+  std::vector<unsigned char> buff(320 * 240);
   
   cv::imencode(".jpg", res, buff, param);
   
