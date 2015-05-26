@@ -61,6 +61,9 @@ std::string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_
 
 }
 
+// BAD!?!? Fix me ('delete cap;' fails if we allocate cap on the heap (Windows only problem?))
+// maybe related to http://answers.opencv.org/question/11294/delete-videocapture/
+static cv::VideoCapture cap;
 
 Handle<Value> open(const Arguments &args)
 {
@@ -68,17 +71,14 @@ Handle<Value> open(const Arguments &args)
   
   Handle<Object> ret = Object::New();
   
-  cv::VideoCapture *cap = new cv::VideoCapture();
-  ret->Set(String::New("success"), Boolean::New(cap->open(0)));
+  ret->Set(String::New("success"), Boolean::New(cap.open(0)));
   
-  if(!cap->isOpened())
+  if(!cap.isOpened())
   {
-    delete cap;
     return scope.Close(ret);
   }
   
   Handle<Object> handle = Object::New();
-  handle->SetHiddenValue(String::New("cap"), External::New(cap));
   
   ret->Set(String::New("handle"), handle);
   
@@ -89,23 +89,17 @@ Handle<Value> close(const Arguments &args)
 {
   HandleScope scope;
   
-  Handle<Value> capHandle = args[0]->ToObject()->GetHiddenValue(String::New("cap"));
-  cv::VideoCapture *cap = reinterpret_cast<cv::VideoCapture *>(External::Unwrap(capHandle));
-  cap->release();
-  delete cap;
+  cap.release();
   
   return scope.Close(Boolean::New(true));
 }
 
 Handle<Value> getImage(const Arguments &args)
 {
-  
   HandleScope scope;
-  Handle<Value> capHandle = args[0]->ToObject()->GetHiddenValue(String::New("cap"));
-  cv::VideoCapture *cap = reinterpret_cast<cv::VideoCapture *>(External::Unwrap(capHandle));
   
   cv::Mat im;
-  cap->read(im);
+  cap.read(im);
   
   cv::Mat res;
   cv::resize(im, res, cv::Size(320, 240));
