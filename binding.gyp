@@ -3,7 +3,7 @@
     {
       'target_name': 'node-boyd',
       'sources': [
-        'node-boyd.cpp',
+        'node-boyd.cpp', 'base64.cpp'
       ],
       'include_dirs': [],
       "conditions": [
