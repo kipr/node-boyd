@@ -6,6 +6,19 @@
         'node-boyd.cpp', 'base64.cpp'
       ],
       'include_dirs': [],
+      'link_settings': {
+        'libraries': [
+          '-lm',
+          '-lopencv_core',
+          '-lopencv_videoio',
+          '-lopencv_imgcodecs',
+          '-lopencv_imgproc',
+        ],
+        'library_dirs': [
+          '/usr/lib',
+          '/usr/local/lib',
+        ],
+      },
       "conditions": [
         [ 'OS=="mac"', {
             'xcode_settings': {
